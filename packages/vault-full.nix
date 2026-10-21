@@ -25,7 +25,7 @@ let
   };
 in
 buildGo127Module (finalAttrs: {
-  pname = "vault-with-ui";
+  pname = "vault-full";
   inherit version;
   inherit src;
 
