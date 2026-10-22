@@ -18,7 +18,11 @@
       forAllSystems =
         f:
         nixpkgs.lib.genAttrs systems (
-          system: f (nixpkgs.legacyPackages.${system}.extend self.overlays.vault-full)
+          system: f (import nixpkgs {
+            inherit system;
+            overlays = [ self.overlays.vault-full ];
+            config.allowUnfree = true;
+          })
         );
     in
     {
